@@ -1,4 +1,3 @@
-
 <template>
   <transition name="fade">
     <div class="vsm" v-if="value" tabindex="-1" @click.self="close" @keyup.esc="close">
