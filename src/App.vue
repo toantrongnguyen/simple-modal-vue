@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-simple-modal v-model="isShowModal" title="Modal Header">
+    <simple-modal v-model="isShowModal" title="Modal Header">
       <template slot="body">
         <h2>My body</h2>
         <input>
@@ -33,7 +33,7 @@
       <template slot="footer">
         <button> I am ok </button>
       </template>
-    </vue-simple-modal>
+    </simple-modal>
     <button @click="isShowModal = !isShowModal">on off </button>
     <h1>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis optio consequatur a repellendus impedit fuga laboriosam quod modi ab?
@@ -61,9 +61,9 @@
 </template>
 
 <script>
-import VueSimpleModal from './VueSimpleModal'
+import SimpleModal from './SimpleModal'
 export default {
-  components: { VueSimpleModal },
+  components: { SimpleModal },
   data () {
     return { isShowModal: false }
   },
