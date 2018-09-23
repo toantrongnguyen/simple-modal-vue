@@ -2,11 +2,10 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-  entry: process.env.NODE_ENV === 'production' ? './src/SimpleModal.vue' : './src/main.js',
+  entry: './src/main.js',
   output: {
-    path: process.env.NODE_ENV === 'production' ? path.resolve(__dirname, 'build') : path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    libraryTarget: 'commonjs2'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -18,7 +17,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8080
+    port: 3000
   },
   module: {
     rules: [
@@ -52,6 +51,11 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      // this will apply to pug template
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
       }
     ]
   },
@@ -62,4 +66,10 @@ module.exports = {
       filename: "./index.html"
     })
   ]
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.entry = './src/SimpleModal.vue'
+  module.exports.output.path = path.resolve(__dirname, 'build')
+  module.exports.output.libraryTarget = 'commonjs2'
 }

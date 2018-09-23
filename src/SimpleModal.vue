@@ -1,22 +1,15 @@
-<template>
-  <transition name="fade">
-    <div class="vsm" v-if="value" tabindex="-1" @click.self="close" @keyup.esc="close">
-      <div class="vsm-modal" :class="size">
-        <button v-if="hasButtonClose" type="button" class="btn-close" @click="close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div v-if="title" class="vsm-modal-header">
-          <h4 class="title">{{ title }}</h4>
-        </div>
-        <div class="vsm-modal-body">
-          <slot name="body" />
-        </div>
-        <div v-if="hasFooter" class="vsm-modal-footer">
-          <slot name="footer" />
-        </div>
-      </div>
-    </div>
-  </transition>
+<template lang="pug">
+  transition(name="fade")
+    div.vsm(v-if="value" tabindex="-1" @click.self="close" @keyup.esc="close")
+      div.vsm-modal(:class="size")
+        button.btn-close(v-if="hasButtonClose" type="button" @click="close")
+          span(aria-hidden="true") &times;
+        div.vsm-modal-header(v-if="title")
+          h4.title {{ title }}
+        div.vsm-modal-body
+          slot(name="body")
+        div.vsm-modal-footer(v-if="hasFooter")
+          slot(name="footer")
 </template>
 
 <script>
