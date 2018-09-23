@@ -13,6 +13,26 @@
   "dependencies": {
     "vue": "^2.5.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toannt181/simple-modal-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/toannt181/simple-modal-vue/issues"
+  },
+  "homepage": "https://github.com/toannt181/simple-modal-vue",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "modal",
+    "front-end",
+    "web",
+    "dialog",
+    "alert",
+    "vue-js-modal",
+    "simple-modal-vue"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
