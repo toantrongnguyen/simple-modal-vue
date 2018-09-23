@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: process.env.NODE_ENV === 'production' ? path.resolve(__dirname, 'build') : path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    libraryTarget: 'commonjs2'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
