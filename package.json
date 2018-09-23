@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode=production"
   },
-  "main": "dist/bundle.js",
+  "main": "build/bundle.js",
   "dependencies": {
     "vue": "^2.5.2"
   },
