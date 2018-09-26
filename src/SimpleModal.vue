@@ -37,24 +37,13 @@ export default {
       default: 'responsive',
     },
   },
-  data() {
-    return {
-      previousScrollPosition: 0,
-    }
-  },
   methods: {
-    open() {
-      if (this.value) return
-      this.$emit('input', true)
-      this.$emit('onOpen')
-    },
     close() {
       this.$emit('input', false)
-      this.$emit('onClose')
     },
     disableScrollOnIpad(disable) {
       if (disable) {
-        this.previousScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+        this.previousScrollPosition = document.documentElement.scrollTop
         document.body.classList.add('vsm-overflow-hidden-ipad')
         document.body.style.top = `-${this.previousScrollPosition}px`
         return
@@ -70,13 +59,15 @@ export default {
   watch: {
     value() {
       if (this.isIpad) {
-        this.disableScrollOnIpad(this.isShow)
+        this.disableScrollOnIpad(this.value)
         return
       }
       if (this.value) {
         document.body.classList.add('vsm-overflow-hidden')
+        this.$emit('onOpen')
       } else {
         document.body.classList.remove('vsm-overflow-hidden')
+        this.$emit('onClose')
       }
     },
   },
