@@ -10,7 +10,30 @@
     "build": "cross-env NODE_ENV=production webpack --mode=production"
   },
   "main": "build/bundle.js",
-  "dependencies": {
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toannt181/simple-modal-vue"
+  },
+  "keywords": [
+    "front-end",
+    "web",
+    "vue",
+    "vuejs",
+    "dialog",
+    "alert",
+    "modal",
+    "modal-vue",
+    "modal-vue-js",
+    "simple modal"
+  ],
+  "bugs": {
+    "url": "https://github.com/toannt181/simple-modal-vue/issues"
+  },
+  "license": "MIT",
+  "peerDependencies": {
     "vue": "^2.5.2"
   },
   "devDependencies": {
