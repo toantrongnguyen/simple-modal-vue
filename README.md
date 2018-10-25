@@ -1,16 +1,22 @@
-# Simple Modal Vue
+<h3 align="center"><a href="https://probot.github.io">Simple Modal Vue</a></h3>
+<p align="center">Very light and simple modal component for Vue<p>
+<p align="center"><a href="https://www.npmjs.com/package/simple-modal-vue"><img src="https://badgen.net/npm/v/simple-modal-vue" alt="NPM"></a>
+
+---
+
 - ### Very light and simple modal component for Vue
 - ### No dependency required
 - ### No external CSS library required
 - ### Fully support on IE10, IE11, Edge, Firefox, Safari, Ipad Safari and Chrome of course
+- ### Fix scroll on Ipad
 
-## Install
+### Install
 
 ```bash
 npm install simple-modal-vue --save
 ```
 
-## Usage
+### Usage
 Usage in example
 ```html
 <template>
@@ -41,20 +47,22 @@ export default {
 </script>
 ```
 
-## Props and methods
-Updating ...
+### Props and methods
 
-## Vesion
-1.0.1 Publish release
+| Name      | Required | Type          | Default     | Description |
+| ---       | ---      | ---           | ---         | ---         |
+| title      | false  | String |             | Name of the modal |
+| hasButtonClose | false | Boolean          | false       | If true allows showing the button close on the modal |
+| hasFooter | false | Boolean          | false       | If true allows showing the footer of the modal |
+| size | false | String ['responsive', 'small', 'big' ]         | 'responsive'       | If true allows resizing depend on config the modal window. |
 
-## Build Setup
-``` bash
-# install dependencies
-npm install
+### Events
 
-# serve with hot reload at localhost:8080
-npm start
+| Name         | Description |
+| ---          | --- |
+| onOpen  | Emits when modal is opened |
+| onClose       | Emits when modal is closed |
 
-# build for production with minification
-npm run build
-```
+### Vesion	
+- 1.0.5 Add unit test coverage 100%
+- 1.0.1 Publish release
