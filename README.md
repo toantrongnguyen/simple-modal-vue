@@ -15,6 +15,9 @@
 ```bash
 npm install simple-modal-vue --save
 ```
+```bash
+yarn install simple-modal-vue --save
+```
 
 ### Usage
 Usage in example
