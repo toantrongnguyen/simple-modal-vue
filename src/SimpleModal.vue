@@ -38,6 +38,9 @@ export default {
     },
   },
   methods: {
+    open() {
+      this.$emit('input', true)
+    },
     close() {
       this.$emit('input', false)
     },
