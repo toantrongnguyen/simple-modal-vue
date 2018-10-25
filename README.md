@@ -12,7 +12,7 @@ npm install simple-modal-vue --save
 
 ## Usage
 Usage in example
-```js
+```html
 <template>
   <div>
     <simple-modal v-model="isShow" title="Modal Header">

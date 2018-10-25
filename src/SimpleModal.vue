@@ -37,24 +37,13 @@ export default {
       default: 'responsive',
     },
   },
-  data() {
-    return {
-      previousScrollPosition: 0,
-    }
-  },
   methods: {
-    open() {
-      if (this.value) return
-      this.$emit('input', true)
-      this.$emit('onOpen')
-    },
     close() {
       this.$emit('input', false)
-      this.$emit('onClose')
     },
     disableScrollOnIpad(disable) {
       if (disable) {
-        this.previousScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+        this.previousScrollPosition =  window.pageYOffset || document.documentElement.scrollTop
         document.body.classList.add('vsm-overflow-hidden-ipad')
         document.body.style.top = `-${this.previousScrollPosition}px`
         return
@@ -69,8 +58,9 @@ export default {
   },
   watch: {
     value() {
+      this.$emit(this.value ? 'onOpen' : 'onClose')
       if (this.isIpad) {
-        this.disableScrollOnIpad(this.isShow)
+        this.disableScrollOnIpad(this.value)
         return
       }
       if (this.value) {
@@ -96,7 +86,7 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    bottom:  0;
+    bottom: 0;
     z-index: 1050;
     background: rgba(0, 0, 0, 0.5);
     overflow: auto;
@@ -113,7 +103,9 @@ export default {
     width: auto;
     margin-left: 16px;
     margin-right: 16px;
-    &-body, &-footer, &-header {
+    &-body,
+    &-footer,
+    &-header {
       padding: 16px;
     }
     &-header {
@@ -156,11 +148,13 @@ export default {
     }
   }
 }
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   padding-top: 0;
-  transition: opacity .25s ease-in-out, padding .35s ease-in-out;
+  transition: opacity 0.25s ease-in-out, padding 0.35s ease-in-out;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   padding-top: 150px;
   opacity: 0;
 }

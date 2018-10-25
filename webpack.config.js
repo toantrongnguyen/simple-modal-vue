@@ -1,6 +1,7 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -35,15 +36,6 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
-      // this will apply to both plain `.js` files
-      // AND `<script>` blocks in `.vue` files
-      {
-        test: /\.js$/,
-        loader: 'babel-loader'
-      },
-      // this will apply to both plain `.css` files
-      // AND `<style>` blocks in `.vue` files
-      // AND `<style lang="scss">` blocks in `.vue` files
       {
         test: /\.s?css$/,
         use: [
@@ -52,7 +44,6 @@ module.exports = {
           'sass-loader'
         ]
       },
-      // this will apply to pug template
       {
         test: /\.pug$/,
         loader: 'pug-plain-loader'
@@ -65,11 +56,18 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
 }
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.entry = './src/SimpleModal.vue'
   module.exports.output.path = path.resolve(__dirname, 'build')
   module.exports.output.libraryTarget = 'commonjs2'
+}
+
+// test specific setups
+if (process.env.NODE_ENV === 'test') {
+  module.exports.externals = [require('webpack-node-externals')()]
+  module.exports.devtool = 'eval'
+  module.exports.mode = 'development'
 }
