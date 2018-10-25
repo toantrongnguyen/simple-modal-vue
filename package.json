@@ -1,6 +1,6 @@
 {
   "name": "simple-modal-vue",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Build an extremely easy modal component in Vuejs",
   "author": "toannt181 <toannt.181@gmail.com>",
   "private": false,
