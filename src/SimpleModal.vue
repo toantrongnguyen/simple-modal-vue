@@ -1,6 +1,6 @@
 <template lang="pug">
   transition(name="fade")
-    div.vsm(v-if="value" tabindex="-1" @click.self="close" @keyup.esc="close")
+    div.vsm(v-if="isShow" v-show="isDisplay" tabindex="-1" @click.self="close" @keyup.esc="close")
       div.vsm-modal(:class="size")
         button.btn-close(v-if="hasButtonClose" type="button" @click="close")
           span(aria-hidden="true") &times;
@@ -35,6 +35,10 @@ export default {
     size: {
       type: String,
       default: 'responsive',
+    },
+    keepModal: {
+      type: Boolean,
+      default: true,
     },
   },
   methods: {
@@ -77,6 +81,12 @@ export default {
     isIpad() {
       const userAgent = window.navigator.userAgent.toLowerCase()
       return /ipad/.test(userAgent)
+    },
+    isShow() {
+      return this.keepModal || this.value
+    },
+    isDisplay() {
+      return this.value
     },
   },
 }
@@ -158,7 +168,7 @@ export default {
 }
 .fade-enter,
 .fade-leave-to {
-  padding-top: 150px;
+  padding-top: 50px;
   opacity: 0;
 }
 </style>
