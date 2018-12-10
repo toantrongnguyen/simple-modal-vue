@@ -65,7 +65,10 @@ export default {
   },
   watch: {
     value() {
-      this.$emit(this.value ? 'onOpen' : 'onClose')
+      const DELAY_EFFECT = 500
+      setTimeout(() => {
+        this.$emit(this.value ? 'onOpen' : 'onClose')
+      }, DELAY_EFFECT)
       if (this.isIpad) {
         this.disableScrollOnIpad(this.value)
         return
