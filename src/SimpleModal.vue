@@ -6,6 +6,8 @@
           span(aria-hidden="true") &times;
         div.vsm-modal-header(v-if="title")
           h4.title {{ title }}
+        div.vsm-modal-header(v-else-if="customHeader")
+          slot(name="header")
         div.vsm-modal-body
           slot(name="body")
         div.vsm-modal-footer(v-if="hasFooter")
@@ -19,6 +21,10 @@ export default {
     title: {
       type: String,
       default: '',
+    },
+    customHeader: {
+      type: Boolean,
+      default: false,
     },
     value: {
       type: Boolean,
@@ -41,6 +47,17 @@ export default {
       default: true,
     },
   },
+  data: () => ({
+    scrollBarWidth: 0,
+  }),
+  created() {
+    const div = document.createElement('div')
+    div.className = 'vsm-scrollbar-measure'
+    document.body.appendChild(div)
+    const scrollBarWidth = div.offsetWidth - div.clientWidth
+    this.scrollBarWidth = scrollBarWidth
+    document.body.removeChild(div)
+  },
   methods: {
     open() {
       this.$emit('input', true)
@@ -50,7 +67,7 @@ export default {
     },
     disableScrollOnIpad(disable) {
       if (disable) {
-        this.previousScrollPosition =  window.pageYOffset || document.documentElement.scrollTop
+        this.previousScrollPosition = window.pageYOffset || document.documentElement.scrollTop
         document.body.classList.add('vsm-overflow-hidden-ipad')
         document.body.style.top = `-${this.previousScrollPosition}px`
         return
@@ -75,8 +92,10 @@ export default {
       }
       if (this.value) {
         document.body.classList.add('vsm-overflow-hidden')
+        document.body.style.paddingRight = `${this.scrollBarWidth}px`
       } else {
         document.body.classList.remove('vsm-overflow-hidden')
+        document.body.style.paddingRight = 0
       }
     },
   },
@@ -184,5 +203,13 @@ export default {
 .vsm-overflow-hidden-ipad {
   position: fixed;
   width: 100%;
+}
+
+.vsm-scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
 }
 </style>
