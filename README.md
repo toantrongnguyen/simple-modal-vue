@@ -67,7 +67,6 @@ export default {
 | onClose       | Emits when modal is closed |
 
 ### Vesion	
-- 1.0.10 Fix scroll padding
 - 1.0.9 Fix some minor issues
 - 1.0.5 Add unit test coverage 100%
 - 1.0.1 Publish release
