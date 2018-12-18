@@ -177,6 +177,8 @@ export default {
   &-modal {
     box-sizing: border-box;
     margin: 50px auto 16px;
+    margin-top: 50vh;
+    transform: translateY(-50%);
     background: white;
     border-radius: 4px;
     overflow: hidden;
@@ -241,17 +243,11 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: all .2s ease-in;
-  .vsm-modal {
-    transition: all .2s ease-out;
-  }
 }
 
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-  .vsm-modal {
-    transform: translateY(-20px);
-  }
 }
 </style>
 
